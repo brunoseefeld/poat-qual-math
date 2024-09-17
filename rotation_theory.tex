@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{enumerate}
+
+
+
+
+\title{Notes on rotation theory}
+
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+
+
+
+
+
+\begin{document}
+
+
+\maketitle
+
+
+\begin{abstract}
+Some important results in rotation theory in low dimensions.
+\end{abstract}
+
+
+
+\section{Plane homeomorphisms}
+
+Plane homeomorphisms will be important to the study of anulli homeomorphisms,
+a fundamental result used in other, more complicated proofs is this result by
+Brower:
+
+\begin{theorem}
+    For $f:\mathbb{R}^2\to \mathbb{R}^2$ an orientation presenving
+    homeomorphism, if $f$ has no periodic point then it has no fixed point.
+
+\end{theorem}
+
+
+Fundamental to the proof of this theorem is a result stating that if 
+$f$ has a periodic disk chain, then f has a fixed point.
+
+
+\begin{definition}[Periodic disk chain]
+A periodic disk chain for $f$ is a family $U_1,\ldots, U_n$ os disks with 
+\begin{enumerate}
+    \item $f(U_i)\cap U_i=\emptyset$
+    \item $U_i\cap U_j=\emptyset$ for $i\neq j$
+    \item For all i, there exists $m_{i-1}$ such that $f^{m_{i-1}}U_{i-1}\cap 
+    U_i \neq \emptyset$
+\end{enumerate}
+\end{definition}
+
+
+
+One example of homeomorphism without fixed points is given by translations,
+we have a strong result due to Brower that says that in a sense every homeomorphism
+without fixed points acts like a translation.
+
+For this we need:
+
+\begin{definition}[Translation domain]
+For a properly embedded line $L$, we say the open connected region whose
+boundary is $L\cup f(L)$ is a translation domain for $f$ if $L$ separates
+$f(L),f^{-1}(L)$.
+
+\end{definition}
+
+
+\begin{theorem}[Brower translation theorem]
+    If $f$ is a plane homeomorphisms, then every point is contained in a 
+    translation domain.
+\end{theorem}
+
+
+
+
+
+
+
+
+
+\end{document}
