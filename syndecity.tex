@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{enumerate}
+
+
+
+
+\title{Syndecity of the set ot return times for skew-products over
+ergodic systems}
+
+
+\author{Bruno Seefeld}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+
+
+
+
+
+\begin{document}
+
+
+\maketitle
+
+
+\begin{abstract}
+
+\end{abstract}
+
+
+\section{Introduction}
+
+Let $(X,\mathcal{X},\mu)$ be a probability space and $T$ a mpt.
+For an integrable function $f\in L_1(X,\mu)$ we define for each $n\in
+\mathbb{N}$ the cocycle $a_f(n,x)=\sum_{i=0}^{n-1}f(T^j x)$.
+This cocycle is important when studying the skew-product over $X$,
+i.e, the measurable transformation $S_f:X\times\mathbb{R}\to X\times\mathbb{R}$
+given by:
+
+\begin{equation}
+S_f(x,t)=(T(x),t+a(1,x))
+\end{equation}
+
+
+the iterates of a point $(x,t)$ will be $S_f^n(x,t)=(T^n(x),a_f(n,x))$.
+
+
+We say that the cocycle $a_f$ is recurrent when for all measurable
+sets of positive $\mu$ measure $A$ we have: for $\epsilon>0$ we can
+find $n\in\mathbb{N}$ with $\{T^{-n}(A)\cap A\cap \{|a_f(n,)|<\epsilon\}\}$.
+There is to say, not only we have recurrence for the dynamics $T$ but
+the points get back with small sum. 
+
+If the dynamical system $(X,T)$ is ergodic and $f$ has zero average,
+then we can expect that the orbits visit the positive and negative 
+regions in a balanced way so that we can comeback with small sum (this is
+more intuitive when we imagine $f$ bounded). In fact this is true by
+the following theorem of Atkinson:
+
+
+\begin{theorem}[Atkinson]
+    For an atomless probability space $(X,\mathcal{X},\mu)$, an ergodic translation $T$,
+    and $f$ integrable, $a_f$ is recurrent iff $\int f d\mu=0$. 
+
+\end{theorem}
+
+
+Let $\nu$ be the product measure $\mu\times \text{Leb}$. We're interested in the recurrence times for a set $A\times B\subset 
+X\times \mathbb{R}$,i.e, the set $R_\lambda (A\times B)=\{n\in\mathbb{N}|
+\nu(S_f^{-n}(A\times B)\cap(A\times B))>\lambda \nu (A\times B)^2\}$.  This
+are the times that the sets comes back to itself bu with positive  measure.
+For the non skew-product case, with only a a measure preserving transformation
+on a finite measure space Kintchine theorem says that $R_\lambda(A)$
+is syndetic, the proof is an aplication of von-Neumann ergodic theorem.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
