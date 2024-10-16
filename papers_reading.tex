@@ -1,0 +1,88 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{enumerate}
+
+
+
+
+\title{Papers I'm reading and ideas about them}
+
+
+\author{Bruno Seefeld}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+
+
+
+
+
+\begin{document}
+
+
+\maketitle
+
+
+\begin{abstract}
+List of papers I'm reading and important ideas about them.
+\end{abstract}
+
+
+
+\section{The Burnside problem for Diff$_\omega^\infty(\mathbb{S}^2)$}
+
+
+\subsection{Introduction to the Burnside problem}
+
+Let $G$ be a finitely generated group such that every element has finit
+order, is $G$ necessarly finite? The answer in general is no.
+
+The paper focuses on three different cases of the following question:
+if the order of the above group is bounded, is the group finite.
+
+The cases are:
+
+\subsection{$G<\text{Diff}_\omega^\infty(\mathbb{S}^2)$}
+
+$G$ is a subgroup of area preserving diffeomorphisms. In this
+case the answer to the last question is ''YeS"". 
+In order to prove it one considers $S=\{s_1,\ldots,s_n\}$ a symmetric
+set of generators of the group, the shift space $\Sigma=S^\mathbb{Z}$:
+$F:\Sigma\times M \to \Sigma\times M$ given by $F(w,x)=(\sigma w,w_0 x)$.
+Since every element of $G$ has finite order, the cocycle cannot admit
+hyperbolic fixed points. 
+
+A group without hyperbolic fixed points is called elliptic.
+For $G$ elliptic, one shows that the growth of derivatives of $G$ 
+is subexponential. In order to do this on asssumes the contrary and
+constructs a hyperbolic invariant ergodic measure and applies the 
+following theorem
+
+\begin{theorem}[Katok]
+    IF $f$ is a $C^{1+\alpha}$ diffeomorphism on a compact smooth manifold and 
+    $\mu$ is a hyperbolic ergodic invariant measure, then $f$ admits
+    hyperbolic periodic points and we can take them close to supp$(\mu)$.
+
+\end{theorem}
+
+
+
+
+
+
+
+
+
+
+\end{document}

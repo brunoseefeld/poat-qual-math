@@ -16,7 +16,7 @@
 \title{Notes on rotation theory}
 
 
-
+\author{Bruno Seefeld}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
@@ -87,6 +87,43 @@ $f(L),f^{-1}(L)$.
     If $f$ is a plane homeomorphisms, then every point is contained in a 
     translation domain.
 \end{theorem}
+
+
+Let $D$ be a translation domain with boundaries $L,f(L)$, consider $U=\cup_{n\in
+\mathbb{Z}}f^n(D)$, this set is connected (connect  a point to it's boundary, keep doing that till
+you reach the other point), open (boundary points intersect only another translation domain 
+because the line are properly embedded) and invariant. 
+One can construct a homeomorphism $h_0: D\to \mathbb{R}\times [0,1]$ that takes
+$L$ to $\mathbb{R}\times \{0\}$ and $f(L)$ to $\mathbb{R}\times\{1\}$ in such 
+a way that $h(x)+(0,1)=h(f(x))$ for $x\in L$. By changing $[0,1]$ for $[n-1,n]$
+we construct a homeomorphisms $h_n$ analogously, define $h:U\to \mathbb{R}^2$ 
+by gluing all the $h_n's$. 
+
+
+
+
+\section{Applicastions of Brower translation theorem}
+
+\subsection{
+    Orientation preserving omemorphims of the sphere $\mathbb{S}^2$ with one fixed point}
+
+If $f:\mathbb{S}^2\to \mathbb{S}^2$ contains only one fixed point,
+then by the stereographical projection with a have on the plane a 
+homeomorphisms without fixed points, therefore without periodic points.
+Going back to the spehre we have that there are no periodic points.
+Also, by Brower translation theorem we have that everuy point is in a 
+translation domain, hence non-recurrent. Since on the orbit of 
+the translation domain the homeomorphisms acts like a translation,
+we have that for any $x\in \mathbb{R}^2$, $\lim_{i}f^i(x)=\infty=\lim_{i}f^{-i}(x)$,
+this implies Cr$(f)=\mathbb{S}^2$.
+
+\subsection{Orientation preserving homemorphims of $\mathbb{S}^2$ wiht two fixed points}
+By removing the two fixed points we can think the homeomorphism acts
+on the open anullus $\mathbb{A}$. 
+
+
+
+
 
 
 
