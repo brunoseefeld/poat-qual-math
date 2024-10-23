@@ -1,0 +1,124 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{enumerate}
+
+
+
+
+\title{Some results about cocycles}
+\author{Bruno Seefeld}
+
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[section]
+
+
+
+
+
+
+\begin{document}
+
+
+\maketitle
+
+
+\begin{abstract}
+Some interesting exercises/resutls about cocycles
+\end{abstract}
+
+
+
+\section{Non-continuity of Lyapunov exponents}
+
+Given two matrices $A_1,A_2\in \text{GL}_2(\mathbb{R})$ and 
+numbers $p_1,p_2$ with $p_1+p_2=1,p_1,p_2>0$, we can consider
+the random matrix $A^(n)=A_{i_n}\ldots A_{i_1}$ with $i_k\in\{1,2\}$
+with a Bernoulli $B(p_1)$ distribution. We can consider the assymptotic
+exponential rate of growth of the  norm of $A^{(n)}$ given by 
+\begin{equation}
+\lambda^+(A_1,A_2,p_1,p_2)=\lim_{n\to \infty}\frac{1}{n}\log \|A^{(n)}\|.
+\end{equation}
+
+The following theorem \footnote{This is true for dimension d and d matrices} says that the quantity $\lambda^+$ is continuous
+on $\text{GL}_2(\mathbb{R})$ and $(0,1)^2$:
+
+\begin{theorem}[Bocker-Viana]
+    The function $\lambda^+: \text{GL}_d(\mathbb{R})\times \text{GL}_d(\mathbb{R}) \times (0,1)^2\to \mathbb{R} $
+    is continuous. 
+\end{theorem}
+
+
+What happens at $p_1=1$? We'll show an example where we don't have continuity
+of $\lambda^+$ at this point. 
+
+Let's take
+
+\begin{align*}
+    A_1=&
+    \begin{pmatrix}
+        2 & 0 \\
+        0 & 1/2
+    \end{pmatrix}\\
+    A_2=&
+    \begin{pmatrix}
+        0 & -1 \\
+        1 & 0
+    \end{pmatrix}\\
+\end{align*}
+
+For $p_1=1$ we have $A^{(n)}=A_1^n$ almost surely, therefore 
+$\lambda^+(A_1,A_2,1,0)=\log 2$. In order to simplify notation denote $p_2=p$ and $X_n=\frac{1}{n}\|A^{(n)}\|$, we'll show that if $p>0$
+then $\lambda^+(A_1,A_2,(1-p),p)=0$, and then there is no continuity at 
+$(A_1,A_2,1,0)$. It's enough to show that the sequence of random variables $X_n$
+converge in probability to 0, therefore it cannot converge almost surely to something
+else. For $\epsilon>0$, it's hard to calculate $\mathbb{P}[X_n>\epsilon]$, 
+but the number of $A_2$'s in $A^{(n)}$ is distributed with binomial distribution
+with coeficients $(p,n)$, this is important since if we have $k$ terms
+$A_2$, then the maximum value of $X_n$ is $\frac{n-k}{n}\log 2$.
+
+Let $Y_n$ denote the number of $A_2$'s in $A^{(n)}$, by the last observation
+above we have 
+$\mathbb{P}[X_n\leq\epsilon]\geq \mathbb{P}[Y_n\geq M]$, with 
+$M=(1-\frac{\epsilon}{\log 2})n$. Therefore:
+
+\begin{align}
+    \mathbb{P}[X_n>\epsilon]=&1-\mathbb{P}[X_n\leq \epsilon]\leq\\
+    \mathbb{P}[Y_n<M]\leq & \exp\{-2n(p-\frac{M}{n})^2\}= \exp\{-2n(p+\frac{\epsilon}{\log 2}-1)^2\}
+\end{align}
+
+the last inequality comes from Hoeffding's inequality and the term
+on the RHS goes to 0 as $n\to \infty$, so $X_n\to 0$ in probability as 
+we wanted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
