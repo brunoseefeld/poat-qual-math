@@ -80,28 +80,97 @@ Let's take
 \end{align*}
 
 For $p_1=1$ we have $A^{(n)}=A_1^n$ almost surely, therefore 
-$\lambda^+(A_1,A_2,1,0)=\log 2$. In order to simplify notation denote $p_2=p$ and $X_n=\frac{1}{n}\|A^{(n)}\|$, we'll show that if $p>0$
+$\lambda^+(A_1,A_2,1,0)=\log 2$. In order to simplify notation denote $p_2=p$ and $X_n=\frac{1}{n}\log \|A^{(n)}\|$, we'll show that if $p>0$
 then $\lambda^+(A_1,A_2,(1-p),p)=0$, and then there is no continuity at 
 $(A_1,A_2,1,0)$. It's enough to show that the sequence of random variables $X_n$
 converge in probability to 0, therefore it cannot converge almost surely to something
-else. For $\epsilon>0$, it's hard to calculate $\mathbb{P}[X_n>\epsilon]$, 
-but the number of $A_2$'s in $A^{(n)}$ is distributed with binomial distribution
-with coeficients $(p,n)$, this is important since if we have $k$ terms
-$A_2$, then the maximum value of $X_n$ is $\frac{n-k}{n}\log 2$.
+else.
 
-Let $Y_n$ denote the number of $A_2$'s in $A^{(n)}$, by the last observation
-above we have 
-$\mathbb{P}[X_n\leq\epsilon]\geq \mathbb{P}[Y_n\geq M]$, with 
-$M=(1-\frac{\epsilon}{\log 2})n$. Therefore:
+By observing that  $A_1 A_2 A_1= A_2$ and $A_2^2=-Id$ we can write the norm of the products 
+$\|A^{(n)}\|$ as  $\|A_1^{n_1}A_2^{n_2}\|$, with the number  $n_1$ being 
+given by a random walk
+\[
+S_{n+1}=\begin{cases}
+    S_n+ 1 & \text{if}\quad X_{n+1}=A_1 \\
+    -S_n & \text{}if\quad X\_{n+1}=A_2
+\end{cases}
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+for example:
 
 \begin{align}
-    \mathbb{P}[X_n>\epsilon]=&1-\mathbb{P}[X_n\leq \epsilon]\leq\\
-    \mathbb{P}[Y_n<M]\leq & \exp\{-2n(p-\frac{M}{n})^2\}= \exp\{-2n(p+\frac{\epsilon}{\log 2}-1)^2\}
+    A^{10}=& A_1^4 A_2 A_1 A_2 A_1^3=  \label{product}\\
+    A_1^4 A_2 (A_1 A_2 A_1) A_1^2=& A_1^4 A_2 A_2 A_1^2=\\
+    A_1^4 (A_2^2) A_1^2=& A_1^6 A_2^2  \\
+    \{S_n\}_{n=1}^{10}=&\{1,2,3,-3,-2,2,3,4,5,6\}
 \end{align}
 
-the last inequality comes from Hoeffding's inequality and the term
-on the RHS goes to 0 as $n\to \infty$, so $X_n\to 0$ in probability as 
-we wanted.
+
+
+
+
+We have then $\frac{1}{n}\log\|A^{(n)}\|\leq \frac{n_1}{n}\log 2$.
+The convergence in probability to 0 will be estabilished then by showing
+$\mathbb{E}[|S_n|]=O(\sqrt{n})$.
+
+Let $\xi_i $ be 1 if $X_i=A_2$ and 0 otherwise. For every product 
+$A^{(n)}$ we can assositate a sequence of runs $\xi_1,\ldots, \xi_n$. 
+For each of this runs we'll consider the random variables $\nu_k$ that 
+count the number of zeros between 1's. More formally denote $\tau_0=0$ 
+$\tau_k=\inf\{k>\tau_{k-1}| \xi_k=1\}$ the time that a one appears after
+the last apperance of a 1 (in position $\tau_{k-1}$). We have then 
+$\nu_k=\tau_k-\tau_{k-1}-1$.
+
+For example: the run associated with the product  \ref{product} is
+$\{0,0,0,1,0,1,0,0,0,0\}$ so that $\tau_1=3,\tau_2=5$ and $\nu_1=0,\nu_2=1$.
+
+Notice that $\mathbb{P}[\nu_k\geq l]=(1-p)^l$, so that the independent
+random variables $\nu_k$ are i.i.d geometrically distributed. We 
+consider the process $T_m=S_{\tau_m -1}$. Depending on the parity of $m$
+we have:
+
+\begin{equation}
+    T_m=\nu_1-\nu_2+\ldots \pm\nu_m.
+\end{equation}
+
+Therefore
+
+\begin{align*}
+    \mathbb{E}[T_m]=
+    \begin{cases}
+        0, & \text{if}\quad $m$ \quad \text{is even} \\
+        \frac{1-p}{p} & \text{if}\quad $m$ \quad \text{is odd}
+    \end{cases}
+\end{align*}
+
+and the variance is given by $\frac{1-p}{p^2}m$.
+
+Applying the Chernoff bound we get, for any $\delta>0:$
+
+\begin{equation*}
+    \mathbb{P}(|T_m|>m^{1/2+\delta})\leq e^{-\frac{p^2}{2^{2\epsilon}(1-p)}
+    m^{2\delta}}
+\end{equation*}
+
+for some $\epsilon$ depending only on $\delta$.
+
+(why does this implies the appropriate order of growth?).
+
+
+
+
 
 
 
