@@ -23,6 +23,8 @@ ergodic systems}
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+
 
 
 
@@ -106,9 +108,10 @@ answer to that question.
 Consider $\alpha\in \mathbb{R}\setminus \mathbb{Q}$
 a badly approximable irrational, there is:
 \begin{align*}
-    \inf\{|\alpha-\frac{p}{q}| :\quad q\in\mathbb{N}^+, p\in \mathbb{Z}\}>0.
+    \inf\{q^2|\alpha-\frac{p}{q}| :\quad q\in\mathbb{N}^+, p\in \mathbb{Z}\}>0.
 \end{align*}
-we'll consider the example from  (ref Aaronson):
+we'll consider the example from  (ref Aaronson), called \textit{discrepancy
+skew product over} $\alpha$:
 \begin{align*}
 T:\mathbb{T}\to \mathbb{T}&\\
  x\mapsto & x+\alpha \\
@@ -122,6 +125,64 @@ considering $\nu$ the product of Lebesgue and the counting measure on $\mathbb{Z
 Let $A=\mathbb{T}\times {0}$, $\epsilon>0$. Notice that $(x,0)
 \in S_f^{-n}(A)\cap A$ iff $x\in \{y\in \mathbb{T}: a_f(n,y)=0\}$, 
 therefore $\nu(S_f^{-n}A\cap A)=\mu(\{a_f(n,;)=0\})$.
+
+
+The main result of the paper is that the dynamical system 
+$(\mathbb{T}\times \mathbb{Z},S_f)$ is \textit{boundedly rationally ergodic}.
+Denote $\Psi_n: \mathbb{T}\to \mathbb{N}$ the function:
+\begin{align}
+    \psi(x)=&\sum_{k=1}^{n-1} \mathds{1}_{\mathbb{T}\times{0}} S_f(x,0)=\\
+    & \#\{1\leq k\leq n-1: a_f(k,x)=0\}
+\end{align}
+
+a corollary of the  main result of (ref paper) is:
+
+\begin{corollary}\label{corollary:Aaronson}
+There exists $M>1$ with $\int_\mathbb{T} \Psi_n=M^{\pm}\frac{n}{\log^{\frac{1}{2}}n}$. 
+\end{corollary}
+
+with $x=M^\pm y$ meaning $\frac{1}{M}\leq \frac{x}{y}\leq M$.
+\paragraph{}
+When $\alpha$ is quadratic we have, from the paper (ref old paper
+by Aaronson), that:
+
+\begin{equation}\label{equation:Aaronson}
+    \sum_{k=1}^{n}\nu (S_f^{-k}A\cap A)=\int_\mathbb{T}\Psi_n
+\end{equation}
+
+
+\begin{proposition}
+For $\alpha$ a quadratic irrational and $(\mathbb{T}\times\mathbb{Z},
+S_f)$ the discrepancy skew product over $\alpha$, for $\epsilon>0$ small
+enough, $A=\mathbb{T}\times \{0\}$ the set $R_{\epsilon}(A)$ is not
+syndetic.
+\end{proposition}
+
+\textbf{Proof:} Assume that the $R_\epsilon(A)$ is
+syndetic. Then there exists $\tau>1$ such that for all $j\in\mathbb{N}$, $R_\epsilon(A)\cap
+\{j,j+1,\ldots,j+\tau\}\neq \emptyset$ . This means that for $N$
+large, $\# R_\epsilon\cap \{1,\ldots,N\}\geq \frac{N}{\tau}$.
+
+Notice that 
+\begin{align}
+    \sum_{k=1}^{n}\nu (S_f^{-k}A\cap A)\geq& (1-\epsilon)\#R_\epsilon\cap \{1,\ldots,n\}\geq\\
+    (1-\epsilon)\frac{n}{\tau}>& M \frac{n}{\log^{\frac{1}{2}}n}\quad \text{for}\quad n\quad \text{large enough}      
+\end{align}
+
+combining the last inequality with formula
+ \ref{equation:Aaronson} and the corollary \ref{corollary:Aaronson}
+ we get a contradiction.
+ 
+ 
+
+ \section{Further questions}
+
+
+
+
+
+
+
 
 
 
