@@ -50,12 +50,12 @@ i.e, the measurable transformation $S_f:X\times\mathbb{R}\to X\times\mathbb{R}$
 given by:
 
 \begin{equation}
-S_f(x,t)=(T(x),t+a(1,x))
+S_f(x,t)=(T(x),t+f(x))
 \end{equation}
 
 
-the iterates of a point $(x,t)$ will be $S_f^n(x,t)=(T^n(x),a_f(n,x))$.
-
+the iterates of a point $(x,t)$ will be $S_f^n(x,t)=(T^n(x),t+a_f(n,x))$.
+\\
 
 We say that the cocycle $a_f$ is recurrent when for all measurable
 sets of positive $\mu$ measure $A$ we have: for $\epsilon>0$ we can
@@ -70,20 +70,75 @@ more intuitive when we imagine $f$ bounded). In fact this is true by
 the following theorem of Atkinson:
 
 
-\begin{theorem}[Atkinson]
+\begin{theorem}[Atkinson] \label{theorem:Atkinson}
     For an atomless probability space $(X,\mathcal{X},\mu)$, an ergodic translation $T$,
-    and $f$ integrable, $a_f$ is recurrent iff $\int f d\mu=0$. 
-
+    and $f$ integrable, $a_f$ is recurrent iff $\int f d\mu=0$.
 \end{theorem}
 
 
 Let $\nu$ be the product measure $\mu\times \text{Leb}$. We're interested in the recurrence times for a set $A\times B\subset 
-X\times \mathbb{R}$,i.e, the set $R_\lambda (A\times B)=\{n\in\mathbb{N}|
-\nu(S_f^{-n}(A\times B)\cap(A\times B))>\lambda \nu (A\times B)^2\}$.  This
-are the times that the sets comes back to itself bu with positive  measure.
-For the non skew-product case, with only a a measure preserving transformation
-on a finite measure space Kintchine theorem says that $R_\lambda(A)$
+X\times \mathbb{R}$,i.e, the set $R_\epsilon (A\times B)=\{n\in\mathbb{N}|
+\nu(S_f^{-n}(A\times B)\cap(A\times B))>\nu (A\times B)^2-\epsilon\}$.  This
+are the times that the set comes back to itself but with large  measure.
+For the non skew-product case, with only a measure preserving transformation
+on a finite measure space Kintchine theorem says that $R_\epsilon(A)$
 is syndetic, the proof is an aplication of von-Neumann ergodic theorem.
+(ref petersen).
+\\
+
+One may ask if in the infinite invariant measure we have an
+analogous Khintchine theorem. In the skew-product
+setting:
+\paragraph{}
+\textbf{Problem:} Given $(X\times \mathbb{R}, \nu,S_f)$ with $a_f$
+recurrent, $\epsilon>0$ and $A\subset X\times \mathbb{R}$ of positive
+measure, is the set $R_\epsilon(A)=\{n\in \mathbb{N}|\nu(S_f^{-n}
+A\cap A)>\nu(A)^2-\epsilon\}$ syndetic?
+
+In the next section we show that an example by Aaronson (discrepancy 
+skew product over badly approximable irrational numbers) gives a negative
+answer to that question. 
+
+
+\section{Discrepancy skew products over irrational rotations}
+
+
+Consider $\alpha\in \mathbb{R}\setminus \mathbb{Q}$
+a badly approximable irrational, there is:
+\begin{align*}
+    \inf\{|\alpha-\frac{p}{q}| :\quad q\in\mathbb{N}^+, p\in \mathbb{Z}\}>0.
+\end{align*}
+we'll consider the example from  (ref Aaronson):
+\begin{align*}
+T:\mathbb{T}\to \mathbb{T}&\\
+ x\mapsto & x+\alpha \\
+f:\mathbb{T}\to \mathbb{Z}&\\
+x\mapsto & 2\mathds{1}_{[0,1/2)}x-\mathds{1}_{[1/2,0)}x.
+\end{align*}
+
+Clearly this satisfyes the hypothesis of Atkinson theorem \ref{theorem:Atkinson}
+considering $\nu$ the product of Lebesgue and the counting measure on $\mathbb{Z}$.
+
+Let $A=\mathbb{T}\times {0}$, $\epsilon>0$. Notice that $(x,0)
+\in S_f^{-n}(A)\cap A$ iff $x\in \{y\in \mathbb{T}: a_f(n,y)=0\}$, 
+therefore $\nu(S_f^{-n}A\cap A)=\mu(\{a_f(n,;)=0\})$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
