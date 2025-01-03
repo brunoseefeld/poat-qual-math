@@ -3,6 +3,7 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{dsfont}
 \usepackage{graphicx}
@@ -13,7 +14,7 @@
 
 
 
-\title{Some results about cocycles}
+\title{Exercise about cocycles}
 \author{Bruno Seefeld}
 
 
@@ -23,6 +24,9 @@
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+
 
 
 
@@ -36,7 +40,8 @@
 
 
 \begin{abstract}
-Some interesting exercises/resutls about cocycles
+showing that random products of a hyperbolic matrix and a rotation
+has zero Lyapunov exponent.
 \end{abstract}
 
 
@@ -82,7 +87,12 @@ Let's take
 For $p_1=1$ we have $A^{(n)}=A_1^n$ almost surely, therefore 
 $\lambda^+(A_1,A_2,1,0)=\log 2$. In order to simplify notation denote $p_2=p$ and $X_n=\frac{1}{n}\log \|A^{(n)}\|$, we'll show that if $p>0$
 then $\lambda^+(A_1,A_2,(1-p),p)=0$, and then there is no continuity at 
-$(A_1,A_2,1,0)$. It's enough to show that the sequence of random variables $X_n$
+$(A_1,A_2,1,0)$.
+
+
+\subsection{Probabilistic approach}
+
+It's enough to show that the sequence of random variables $X_n$
 converge in probability to 0, therefore it cannot converge almost surely to something
 else.
 
@@ -92,7 +102,7 @@ given by a random walk
 \[
 S_{n+1}=\begin{cases}
     S_n+ 1 & \text{if}\quad X_{n+1}=A_1 \\
-    -S_n & \text{}if\quad X\_{n+1}=A_2
+    -S_n & \text{}if\quad X_{n+1}=A_2
 \end{cases}
 \]
 
@@ -122,12 +132,13 @@ for example:
 
 
 We have then $\frac{1}{n}\log\|A^{(n)}\|\leq \frac{n_1}{n}\log 2$.
-The convergence in probability to 0 will be estabilished then by showing
-$\mathbb{E}[|S_n|]=O(\sqrt{n})$.
+The convergence in probability to 0
+of $X_n$ will be estabilished then by showing
+$\frac{|S_n|}{n}\to 0$ in  probability.
 
 Let $\xi_i $ be 1 if $X_i=A_2$ and 0 otherwise. For every product 
 $A^{(n)}$ we can assositate a sequence of runs $\xi_1,\ldots, \xi_n$. 
-For each of this runs we'll consider the random variables $\nu_k$ that 
+For each of these runs we'll consider the random variables $\nu_k$ that 
 count the number of zeros between 1's. More formally denote $\tau_0=0$ 
 $\tau_k=\inf\{k>\tau_{k-1}| \xi_k=1\}$ the time that a one appears after
 the last apperance of a 1 (in position $\tau_{k-1}$). We have then 
@@ -166,7 +177,142 @@ Applying the Chernoff bound we get, for any $\delta>0:$
 
 for some $\epsilon$ depending only on $\delta$.
 
-(why does this implies the appropriate order of growth?).
+
+
+Writing $\nu_1+\nu_2+\ldots+\nu_k=\tau_k=\tau_0-1$ and applying the 
+strong law of large number we get $\tau_k=(\frac{1-p}{p}+o(1))k$.
+So $T_m=S_{\tau_m -1}=S_{\Omega(m)}$ and the large deviation argument
+also holds for $S_m$. 
+
+Combining all this to show $\frac{|S_m|}{m}$ converges in probability to 0:
+let $\epsilon>0$, choose $m$ large enough so that $$\frac{1}{m^{1/2+\delta}}<\epsilon$$.
+we have $\mathbb{P}\{\frac{|S_m|}{m}>\epsilon\}\leq e^{-cm^{2\delta}}$ for some
+positive constant $c$ depending only on $p,\delta$.
+
+
+
+\subsection{Dynamical approach}\footnote{This solution was  informed to me by Jairo Bochi}
+
+We'll interpret the problem as a linear cocycle over a Bernoulli
+shift and show that an induced cocycle has 0 Lyapinov exponent,
+therefore the original one also has this property by
+
+\begin{proposition}
+    For a linear cocycle $F:M\times \mathbb{R}^d\to M\times \mathbb{R}^d$ 
+    with invariant measure $\mu$ 
+    and $G:Z\times\mathbb{R}^d\to Z\times\mathbb{R}^d$ an induced cocycle with
+    invariant measure $\nu$,
+    there is a function $c:M\to R, c\geq 1$ such that 
+    the Lyapunov exponent $\lambda^+ (x,G)=c(c)\lambda^+(x,F)$ $\mu$
+    almost everywhere.
+\end{proposition}
+
+
+
+Let $M=\{0,1\}^\mathbb{Z}$, $A:M\to \text{GL}_2(\mathbb{R})$
+be given by
+\begin{align*}
+    A(x_n)_n=
+    \begin{cases}
+        A_1\quad\text{if}\quad x_0=0 \\
+        A_2\quad\text{if}\quad x_0=1
+    \end{cases}
+\end{align*}
+
+and $Z=\{x\in M|x_0=1\}$, the measure $\mu$ being Bernoulli with 
+parameter $1-p$.
+\paragraph{}
+
+The first return map to $Z$, $g:Z\to Z$, is a shift on infinitely many symbols. 
+More formally, consider $\mathcal{C}: Z\to \mathbb{N}^\mathbb{Z}$
+given by $\mathcal{C}(x_n)_n=(\nu_n)_n$ with \\ $\nu_n=\tau_n-\tau_{n-1}-1$,
+with $\tau_n$ being as in the probabilistic approach: the position
+of the $n$-th 1, in this case the $n$-th return time. We have
+\begin{proposition}
+   With the above $\sigma \circ \mathcal{C}=\mathcal{C}\circ g $
+\end{proposition}
+
+\begin{proof}
+Take $x\in Z$, write $\mathcal{C}(x)=(\nu_n)_n$, 
+we have $g(x)=y$, with $y_k=x_{\tau_1+k}$, so $\mathcal{C}y=(\nu_{n+1})_n=
+\sigma \mathcal{C} (x)$.
+\end{proof} 
+
+Notice also that the induced invariant measure $\nu_I$ on 
+$\mathbb{N}^\mathbb{Z}$is Bernoulli.
+To see this let's calculate the value of $\nu_I$ on cylinders.
+It's enough to consider the cases of a one coordinate cylinder, 
+since
+\begin{align*}
+\nu_I ([j_1=a_1;\ldots, j_k=a_k])=&\\
+\nu (\mathcal{C}^{-1} [j_1=a_1;\ldots, j_k=a_k])=&\\
+\prod_{l} \nu (\mathcal{C}^{-1}[j_l=a_l]). 
+\end{align*}
+By invariance it's enough to consider that the coordinate is the 
+0 one, so 
+
+\begin{align*}
+\nu(\mathcal{C}^{-1})[k]=& \frac{\mu([1\quad 0_k \quad 1])}{p}=\\
+\frac{p^2}{p}(1-p)^k=&p(1-p)^k
+\end{align*}
+
+summing over $k$ we get that it's in fact a probability measure. 
+\paragraph{}
+Consider the induced cocycle $B:Z\to \text{GL}_2(\mathbb{R})$
+given by $B(x)=A^{r(x)}(x)$, with $r(x)=\tau_1$ being the
+first return time. We have $B(x)=A_1^{\nu_1}A_2$ and by induction
+$B^n(x)=A_1^{\nu_n} A_2 A_1^{\nu_{n-1}}A_2\ldots A_1{^\nu_1} A_2$.
+Therefore
+
+\begin{align*}
+\frac{1}{n}\log \|B^n (x)\|\leq& \\
+ &\frac{1}{n} (\nu_1-\nu_2+\nu_3-\ldots  \pm \nu_n)=\\
+ &\frac{1}{n}\sum_{k=1}(-1)^k r(g^k(x))
+\end{align*}.
+
+In this approach we see the sum in the inequality above as an
+alternate Birkhoff sum of an integrable function on 
+$(\mathbb{N}^\mathbb{Z},\nu_I,\sigma)$.
+
+\begin{lemma}
+Let $(X,\mu,T)$ be a measure preserving dynamical system and $f\in L_1(X,\mu)$,
+then $\frac{1}{n}\sum_{k=0}^{n-1} (-1)^kf(T^k(x))\to 0$ $\mu$ a.e.
+\end{lemma}
+
+\begin{proof}
+    Let $AS_n(X)=\sum_{k=0}^{n-1}(-1)^k f(T^k(x))$ be the $n$-th alternating sum and
+    $S_n$ be the Birkhoff sum of $T^2$, we have $AS_{2n-1}(x)=f(x)+S_n(Tx)-
+    S_n(x)$. Applying Birkhoff ergodic theorem we get that the
+    result holds along the odd integers. Analogously it hold for 
+    the even integers. So it holds for any subsequence.
+\end{proof}
+
+
+\section{Remark}
+
+The first approach is slightly more elaborate but we get exponential
+convergence, at least in probability. 
+By using a ``soft analysis" result like Birkhoff ergodic theorem we get a simpler proof,
+but don't have any infromation about the speed of convergence to 0.
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
 
 
 
