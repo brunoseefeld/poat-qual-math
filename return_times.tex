@@ -1,0 +1,147 @@
+\documentclass{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{enumitem}
+
+
+
+
+\title{Return times in infinite ergodic theory}
+
+
+\author{Bruno Seefeld}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+
+
+\begin{document}
+\maketitle
+
+
+\section{Examples}
+
+\subsection{Bernoulli shift}
+Let $X=\{-1,1\}^\mathbb{Z}$ and $\phi:X\to \mathbb{R}$ be given by 
+$\phi(x_n)_n=x_0$. Take $U=\{x\in X| x_0=1\}$ which we denote by $[0:1]$.
+We have, for $n>0$, $\sigma^{-n}(U)\cap U=[0:1, n:1]$. When $n$ is even,
+$\sigma^{-n}(U)\cap U\cap \{|S_\phi(n,)|<\epsilon\}=\emptyset$; when
+$n\geq 3$ is odd, 
+$\sigma^{-n}(U)\cap U\cap |\{S_\phi(n,)|<\epsilon\}=[0:1, W, n:1]$
+with $W$ being a block of length $n-1$ summing to $-2$. 
+
+The measure of each block is $\frac{1}{2}^{n+1}$ and there are 
+${n-1\choose \frac{n+1}{2}}$ such blocks, therefore the intersection
+has measure  $B_n=\frac{1}{2}^{n+1} {n-1\choose \frac{n+1}{2}}$, so
+that the set $R(U)$ is syndetic. Since $B_n\to 0$, the set $R_\lambda(U)$
+is not syndetic though.
+
+
+\subsection{Some irrational rotations}
+
+
+
+\section{The general case}
+
+Let $(X,\mathcal{B},\mu)$ be an infinite measure $\sigma$-
+finite measure space and $T$ a measure preserving conservative ergodic
+transformation. We have: 
+
+\begin{theorem}[Hopf ratio ergodic theorem]
+For $f,g\in L_1(X,\mu)$, $g\geq 0$,
+\begin{align*}
+    \frac{S_n(f)}{S_n(g)}\to \frac{\int f d\mu}{\int g f\mu} \quad \text{a.e on} \quad X
+\end{align*}
+\end{theorem}
+
+and by taking a sequence of sets $A_n\uparrow X$ and $g_N=\mathds{1}_{A_N}$
+we get 
+
+\begin{corollary}[Birkhoff ergodic theorem]
+For $f\in L_1(X,\mu)$
+\begin{align*}
+        \frac{1}{n}S_n(f)\to 0 \quad \text{a.e on} \quad X.
+\end{align*}
+\end{corollary}
+
+So by taking a set $A\in \mathcal{B}$ with $0<\mu(A)<\infty$ we 
+can apply the Dominated Convergence Theorem and get that 
+$\frac{1}{n}\sum_{k=0}^{n-1}\mu(A\cap T^{-k} A)\to 0$.
+Therefore the set of $\lambda$-large return times of $A$ cannot be syndetic,
+since if there was a gap $\tau$ we would have for all $n$ large
+$\frac{1}{n}\sum_{k=0}^{n-1}\mu(A\cap T^{-k} A)\geq \frac{1}{\tau}\lambda\mu(A)^2>0$,
+a contradiction.
+
+\subsection{Skew-products}
+
+For a probability space $(X,\mathcal{B},\mu)$, an ergodic 
+measure preserving transformation $T$, and an integrable
+function $\phi\in L_1(X,\mu)$ we can define the \textbf{skew-product}
+$F_\phi: X\times \mathbb{R}\to X\times\mathbb{R}$ by 
+
+\begin{align*}
+F_\phi(x,t)=(T(x),t+\phi(x))
+\end{align*}
+
+with the invariant measure being the product of $\mu$ and Lebesgue.
+\paragraph{}
+
+The second coordinate of the iterates of $F_\phi$ is given by 
+$S_n(x)$ for $n>0$ and $\sum_{j=-1}^{-n}\phi(T^{j}x)$ for $n<0$.
+There is nothing special with the group $\mathbb{R}$, we could 
+change it by any locally compact group and it's Haar measure. 
+
+\paragraph{}
+
+With this last information in mind consider $\phi:X\to \mathbb{Z}$
+with zero integral. 
+
+\paragraph{}
+
+=======next writing
+-Atkinson for $\mathbb{Z}$
+-atkinson showed that a certain set is infinite
+-the results show that it can't be syndetic for a Khitnchine 
+type bound
+
+-can it be true if we remove the bound?.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

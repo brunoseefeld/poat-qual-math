@@ -8,7 +8,7 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage[colorinlistoftodos]{todonotes}
-\usepackage{enumerate}
+\usepackage{enumitem}
 
 
 
@@ -44,7 +44,8 @@ ergodic systems}
 
 \section{Introduction}
 
-Let $(X,\mathcal{X},\mu)$ be a probability space and $T$ a mpt.
+Let $(X,\mathcal{X},\mu)$ be a probability space and $T$ a measure preserving
+transformation.
 For an integrable function $f\in L_1(X,\mu)$ we define for each $n\in
 \mathbb{N}$ the cocycle $a_f(n,x)=\sum_{i=0}^{n-1}f(T^j x)$.
 This cocycle is important when studying the skew-product over $X$,
@@ -61,7 +62,7 @@ the iterates of a point $(x,t)$ will be $S_f^n(x,t)=(T^n(x),t+a_f(n,x))$.
 
 We say that the cocycle $a_f$ is recurrent when for all measurable
 sets of positive $\mu$ measure $A$ we have: for $\epsilon>0$ we can
-find $n\in\mathbb{N}$ with $\{T^{-n}(A)\cap A\cap \{|a_f(n,)|<\epsilon\}\}$.
+find $n\in\mathbb{N}$ with $\mu(T^{-n}(A)\cap A\cap \{|a_f(n,)|<\epsilon\}\})>0$.
 There is to say, not only we have recurrence for the dynamics $T$ but
 the points get back with small sum. 
 
@@ -99,7 +100,8 @@ A\cap A)>\nu(A)^2-\epsilon\}$ syndetic?
 
 In the next section we show that an example by Aaronson (discrepancy 
 skew product over badly approximable irrational numbers) gives a negative
-answer to that question. 
+answer to that question when we consider the skew-product defined on 
+$X\times\mathbb{Z}$. 
 
 
 \section{Discrepancy skew products over irrational rotations}
@@ -122,7 +124,7 @@ x\mapsto & 2\mathds{1}_{[0,1/2)}x-\mathds{1}_{[1/2,0)}x.
 Clearly this satisfyes the hypothesis of Atkinson theorem \ref{theorem:Atkinson}
 considering $\nu$ the product of Lebesgue and the counting measure on $\mathbb{Z}$.
 
-Let $A=\mathbb{T}\times {0}$, $\epsilon>0$. Notice that $(x,0)
+Let $A=\mathbb{T}\times \{0\}$, $\epsilon>0$. Notice that $(x,0)
 \in S_f^{-n}(A)\cap A$ iff $x\in \{y\in \mathbb{T}: a_f(n,y)=0\}$, 
 therefore $\nu(S_f^{-n}A\cap A)=\mu(\{a_f(n,;)=0\})$.
 
@@ -176,6 +178,13 @@ combining the last inequality with formula
  
 
  \section{Further questions}
+
+ \begin{enumerate}
+    \item What happens when $\alpha$ is not quadratic?
+    \item What happens if it is Liouville?
+    \item What are some necessary conditions on the dynamics and on the integrable function that makes the return times of the skew-product syndetic or not?
+    \item In the case of the discrepancy skew-product, is the set of small returns syndetic? There is: is $\{n|\mu(S_f^{-n}(A)\cap A\cap \{a_f(n:)=0\})>0\}$ syndetic?
+ \end{enumerate}
 
 
 

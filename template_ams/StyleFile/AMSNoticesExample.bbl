@@ -1,0 +1,18 @@
+% \bib, bibdiv, biblist are defined by the amsrefs package.
+\begin{bibdiv}
+\begin{biblist}
+
+\bib{MR0001219}{article}{
+      author={Jacobson, N.},
+       title={The fundamental theorem of the {G}alois theory for quasi-fields},
+        date={1940},
+        ISSN={0003-486X},
+     journal={Ann. of Math. (2)},
+      volume={41},
+       pages={1\ndash 7},
+         url={http://doi-org/10.2307/1968817},
+      review={\MR{0001219}},
+}
+
+\end{biblist}
+\end{bibdiv}
